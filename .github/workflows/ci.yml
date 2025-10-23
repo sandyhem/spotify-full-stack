@@ -1,0 +1,30 @@
+name: MERN CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  backend-test:
+    runs-on: ubuntu-latest
+
+    env:
+      PORT: ${{ secrets.PORT }}
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Backend Dependencies
+        working-directory: ./backend
+        run: npm install
+      
+      - name: Run Backend Tests
+        working-directory: ./backend
+        run: npm test

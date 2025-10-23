@@ -1,5 +1,5 @@
-import { v2 as cloudinary } from 'cloudinary'
-import songModel from '../models/songModel.js';
+const { v2: cloudinary } = require('cloudinary')
+const songModel = require('../models/songModel')
 
 const addSong = async (req, res) => {
 
@@ -66,4 +66,4 @@ const removeSong = async (req, res) => {
 
 }
 
-export { addSong, listSong, removeSong }
+module.exports = { addSong, listSong, removeSong }

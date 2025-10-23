@@ -1,10 +1,10 @@
-import express from "express"
-import cors from 'cors'
-import connectCloudinary from "./src/config/cloudinary.js";
-import 'dotenv/config'
-import connectDB from "./src/config/mongodb.js";
-import songRouter from "./src/routes/songRoute.js";
-import albumRouter from "./src/routes/albumRoute.js";
+const express = require("express")
+const cors = require('cors')
+require('dotenv').config()
+const connectCloudinary = require('./src/config/cloudinary')
+const connectDB = require('./src/config/mongodb')
+const songRouter = require('./src/routes/songRoute')
+const albumRouter = require('./src/routes/albumRoute')
 
 // app config
 const app = express()
@@ -22,4 +22,6 @@ app.use("/api/album", albumRouter )
 
 app.get("/", (req, res) => res.send("API Working"))
 
-app.listen(port, () => console.log(`Server started on ${port}`))
+const server = app.listen(port, () => console.log(`Server started on ${port}`))
+
+module.exports = { app, server };

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose')
 
 const albumSchema = new mongoose.Schema({
     name: { type: String, required: true },
@@ -6,7 +6,6 @@ const albumSchema = new mongoose.Schema({
     bgColour: { type: String, required: true },
     image: { type: String, required: true },
 })
+const albumModel = mongoose.models.album || mongoose.model('album', albumSchema)
 
-const albumModel = mongoose.models.album || mongoose.model("album", albumSchema);
-
-export default albumModel;
+module.exports = albumModel
