@@ -7,7 +7,7 @@ services:
   backend:
     build: ./backend
     ports:
-      - "5000:5000"
+      - "4000:4000"
     depends_on:
       - mongo
     env_file:
@@ -22,6 +22,6 @@ services:
   frontend-spotify:
     build: './spotify-clone'
     ports:
-      - "3000:3000"
+      - "2000:2000"
     env_file:
       - "./spotify-clone/.env"      
