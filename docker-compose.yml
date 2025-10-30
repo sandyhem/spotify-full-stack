@@ -5,13 +5,13 @@ services:
       - "8080:27017" #docker port: localmachine port you can fix docker port as your wish
 
   backend:
-    build: ./backend
+    build: ./spotify-backend
     ports:
       - "4000:4000"
     depends_on:
       - mongo
     env_file:
-      - "./backend/.env"
+      - "./spotify-backend/.env"
 
   frontend-admin:
     build: './spotify-admin'
